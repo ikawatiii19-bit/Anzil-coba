@@ -1,0 +1,120 @@
+/* ====== BASE ====== */
+body {
+    margin: 0;
+    padding: 40px 0;
+    background: #f2e9dc;
+    font-family: 'Patrick Hand', cursive;
+    display: flex;
+    justify-content: center;
+}
+
+/* ====== ANIMASI ====== */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes subtle-shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(0.8px, -0.6px); }
+    50% { transform: translate(-0.6px, 0.8px); }
+    75% { transform: translate(0.5px, 0.4px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes wobble {
+    0% { transform: rotate(3deg); }
+    50% { transform: rotate(6deg); }
+    100% { transform: rotate(3deg); }
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== NOTEBOOK ====== */
+.notebook-container {
+    position: relative;
+}
+
+.notebook {
+    background: #fffdf7;
+    width: 80%;
+    max-width: 700px;
+    padding: 60px 70px;
+    border-radius: 12px;
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.18),
+        inset 0 0 40px rgba(255, 240, 200, 0.5);
+    animation: float 4.5s ease-in-out infinite,
+               subtle-shake 6s infinite;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.09) 1px, transparent 1px);
+    background-size: 100% 32px;
+}
+
+.notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 65px;
+    width: 2px;
+    background: rgba(255,0,0,0.3);
+}
+
+/* Sticky note */
+.sticky-note {
+    position: absolute;
+    top: -35px;
+    right: -30px;
+    background: #fff7a9;
+    padding: 18px 25px;
+    font-family: 'Indie Flower';
+    font-size: 20px;
+    border: 2px dashed #d4c447;
+    width: 180px;
+    transform: rotate(4deg);
+    animation: wobble 3.5s ease-in-out infinite;
+    box-shadow: 4px 4px 14px rgba(0,0,0,0.25);
+}
+
+/* TITLE & CONTENT */
+.title {
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.content {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fade 1.3s ease forwards;
+}
+
+.content.fade-in {
+    animation-delay: 0s;
+}
+
+.content.fade-in.delay-2 { animation-delay: 0.7s; }
+.content.fade-in.delay-3 { animation-delay: 1.4s; }
+
+.content h2 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.content ul {
+    margin-left: 20px;
+}
